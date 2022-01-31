@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Steps to run locally
 
-clone repo
-npm i
-npm start
+- clone repo
+- npm i
+- npm start
+
+
+## Demo
+Live Demo - https://laurenscain.github.io/
