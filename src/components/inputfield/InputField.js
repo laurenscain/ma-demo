@@ -6,7 +6,6 @@ import { CHANGE_USER } from '../../store/Actions';
 export default function InputField({name, type}) {
 
     const { userState, usersDispatch } = useCustomContext();
-    const {user} = userState;
 
     const handleChange = e => {
         usersDispatch({

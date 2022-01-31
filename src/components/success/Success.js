@@ -8,7 +8,7 @@ export default function Success() {
 
     return (
         <div className="successLbl">
-            <img src={logo} width="480" height="270" ></img>
+            <img src={logo} alt="Success!" width="480" height="270" ></img>
             <span>Schedule has been submitted!</span>
             <br />
             <button onClick={() => usersDispatch({type:RESET})}>Create A New Schedule</button>

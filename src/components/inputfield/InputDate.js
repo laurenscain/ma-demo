@@ -31,8 +31,9 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
                     field: name,
                     value:moment(minimumDate).format('MM-DD-YYYY')
                 });
+            }
         }
-    }
+    // eslint-disable-line
     }, [name])
     
 

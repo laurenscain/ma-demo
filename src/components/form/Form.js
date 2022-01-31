@@ -6,7 +6,6 @@ import DateCard from '../inputfield/DateCard';
 import { months } from '../../store/constants';
 import { CHANGE_USER } from '../../store/Actions';
 import moment from 'moment';
-import { setDate } from 'date-fns/esm';
 
 export default function Form({errors}) {
 
@@ -34,12 +33,14 @@ export default function Form({errors}) {
             setDay('01');
             setYear('1980');
         }
+    // eslint-disable-line
     }, [])
 
     useEffect(() => {
         if(user && user.birthdate && !isNaN(user.birthdate)) {
             setFromDate(moment(user.birthdate));
         } 
+    // eslint-disable-line
     }, [user])
 
     useEffect(() => {
@@ -74,10 +75,10 @@ export default function Form({errors}) {
                     {months.map(m => <option key={`month-${m.value}`} value={m.value} selected={m.value === month}>{m.label}</option>)}
                 </select>
                 <select onChange={(e) => setDay(e.target.value)} name="birthdateDay" >
-                    {Array(31).fill().map((_, idx) => {let d = idx < 9 ? `0${idx + 1}` : (1 + idx); return <option key={`day-${d}`} selected={d == day} value={d}>{d}</option>})}
+                    {Array(31).fill().map((_, idx) => {let d = idx < 9 ? `0${idx + 1}` : (1 + idx); return <option key={`day-${d}`} selected={d === day} value={d}>{d}</option>})}
                 </select>
                 <select  onChange={(e) => setYear(e.target.value)} name="birthdateYear" >
-                    {Array(100).fill().map((_, idx) => {let y = new Date().getFullYear() - idx; return <option key={`year-${y}`} selected={y == year} value={y}>{y}</option>})}
+                    {Array(100).fill().map((_, idx) => {let y = new Date().getFullYear() - idx; return <option key={`year-${y}`} selected={y === year} value={y}>{y}</option>})}
                 </select>
             </div>
             <br />
