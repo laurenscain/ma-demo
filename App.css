@@ -1,0 +1,209 @@
+input:invalid {
+  border: 1px dashed red;
+}
+
+input:valid {
+  border: 1px solid #acacac;
+}
+
+.errorTxt {
+  color: #ff7777;
+}
+
+.indentedErrorTxt {
+  color: #ff7777;
+  display: inline-block;
+  padding-left: 80px;
+}
+.loginForm {
+  height: 500pxvh;
+  width: 50%;
+  margin: auto;
+}
+
+.loginForm button {
+  width: 100%;
+  margin: 20px auto;
+  height: 50px;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+button {
+  color: #ffffff;
+  background-color: #1890ff;
+  border: #ffffff 1px solid;
+  border-radius: 8px;
+  padding: 10px;
+}
+button:disabled {
+  color: #cdcdcd;
+  opacity: 0.7;
+}
+
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 2;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.successLbl {
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dateCard {
+  width: 47% !important;
+  height: 60px !important;
+  border: solid 2px #cdcdcd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(155, 155, 155, 0.2);
+  margin: 10px 0;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dateCard span {
+  padding: 0 10px;
+}
+
+select {
+  padding: 0 5px;
+  margin: 0 5px;
+  border: 1px solid #acacac;
+}
+
+.contentDiv {
+  padding: 50px;
+  margin-top: 50px;
+  width: 50%;
+  height: 70%;
+  margin: 20px auto;
+  border: solid 1px #dedede;
+}
+
+.ant-picker {
+  width: 160px;
+}
+
+.ant-picker-suffix {
+  padding: 0 !important;
+  width: 25px;
+}
+
+.navContainer {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: inline-block;
+  min-width: 80px;
+}
+
+.scheduleDiv {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.successGif {
+  width: 480;
+  height: 270;
+}
+
+/* medium screens */
+
+@media screen and (min-width: 800) and (max-width: 1400px) and (orientation: portrait) {
+  .dateCard {
+    width: 80% !important;
+    display: inline-block;
+  }
+  .contentDiv {
+    width: 80% !important;
+  }
+  .scheduleDiv {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    display: flex;
+  }
+  .successGif {
+    width: 380;
+  }
+}
+
+/* smalll screens */
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .contentDiv {
+    padding: 10px;
+    margin-top: 10px;
+    width: 90%;
+  }
+  .indentedErrorTxt {
+    color: #ff7777;
+    display: inline-block;
+    padding-left: 0 !important;
+  }
+  .dateCard {
+    display: block;
+    min-width: 80px;
+    min-height: 100px;
+    width: 90% !important;
+  }
+  .scheduleDiv {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .successGif {
+    width: 90%;
+  }
+  .successLbl {
+    font-size: 16px;
+  }
+  .successBtn {
+    height: 45px;
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .contentDiv {
+    padding: 10px;
+    margin-top: 10px;
+    width: 70%;
+  }
+}
