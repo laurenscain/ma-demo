@@ -18,18 +18,20 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
          * ASSUMPTION: end date is always after start date, no 2 periods overlap
          */
         if(dates[0] && dates[0].available){
-            let m = dates[0].available.sort((a, b) => moment(a.startDate).isBefore(b.startDate) ? -1 : 1);
+            let m = dates[0].available.sort((a, b) => moment(a.startDate, "MM-DD-YYYY").isBefore(b.startDate, "MM-DD-YYYY") ? 1 : -1);
         
             //if the first start date is before today, choose today
             let today = moment(new Date());
             if(m && m[0]){
-                let minimumDate = moment(m[0].startDate).isBefore(today) ? moment(today) : m[0].startDate;
+                let minimumDate = moment(m[0].startDate).isBefore(today, "MM-DD-YYYY") ? moment(today, "MM-DD-YYYY") : moment(m[0].startDate, "MM-DD-YYYY");
+                console.log('sttig min date', minimumDate)
+                console.log(m[0].startDate, moment(m[0].startDate, "MM-DD-YYYY"))
                 setMinDate(minimumDate);
 
                 usersDispatch({
                     type: CHANGE_STUDY,
                     field: name,
-                    value:moment(minimumDate).format('MM-DD-YYYY')
+                    value:moment(minimumDate, "MM-DD-YYYY").format('MM-DD-YYYY')
                 });
         }
         }
@@ -41,7 +43,8 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
        if(!value || !value.date) return;
        let today = moment(new Date());
        
-       let minimumDate = moment(value.date).isBefore(today) ? moment(today) : moment(value.date);
+       let minimumDate = moment(value.date, "MM-DD-YYYY").isBefore(today) ? moment(today, "MM-DD-YYYY") : moment(value.date, "MM-DD-YYYY");
+       console.log('setting min date', minimumDate)
        setMinDate(minimumDate);
 
     }, [value])
@@ -61,23 +64,23 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
      */
     const isDateDisabled = d => {
         let today = new Date();
-        if(moment(today).isAfter(d)) return true;
+        if(moment(today, "MM-DD-YYYY").isAfter(d, "MM-DD-YYYY")) return true;
 
         if(!checkDisabled) return false;
 
             
         let periods = userState.availableSchedule.filter(s => (s.name === name) ? s.available : null);
         if(periods[0] && periods[0].available){
-            let found = periods[0].available.find(p => moment(p.startDate).isSameOrBefore(d) && moment(p.endDate).isSameOrAfter(d))
+            let found = periods[0].available.find(p => moment(p.startDate, "MM-DD-YYYY").isSameOrBefore(d, "MM-DD-YYYY") && moment(p.endDate, "MM-DD-YYYY").isSameOrAfter(d, "MM-DD-YYYY"))
             return !found;
         }
      
         return true;
     }
-
+console.log('min date',minDate)
     return (
         <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
-            <DatePicker allowClear={false} value={value && value.date !== undefined ? moment(value.date): minDate ? moment(minDate) : null} open={defaultOpen} onChange={handleChange} disabledDate={isDateDisabled} />
+            <DatePicker allowClear={false} value={value && value.date !== undefined ? moment(value.date, "MM-DD-YYYY"): minDate ? moment(minDate, "MM-DD-YYYY") : null} open={defaultOpen} onChange={handleChange} disabledDate={isDateDisabled}  />
             
             <span className="errorTxt">{userState.errors[name]}</span>
         </div>

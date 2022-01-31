@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../assets/giphy.gif';
 import { RESET } from '../../store/Actions';
 import { useCustomContext } from '../../store/CustomContext';
 
 export default function Success() {
-    const { usersDispatch } = useCustomContext();
+    const { userState, usersDispatch } = useCustomContext();
+
+    useEffect(() => {
+      console.log('printing user object');
+      console.log(userState.user);
+    }, []);
+    
 
     return (
         <div className="successLbl">
