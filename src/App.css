@@ -15,7 +15,6 @@ input:valid {
   display: inline-block;
   padding-left: 80px;
 }
-
 .loginForm {
   height: 500pxvh;
   width: 50%;
@@ -98,12 +97,6 @@ button:disabled {
   padding: 0 10px;
 }
 
-@media screen and (max-width: 1200px) {
-  .dateCard {
-    width: 80% !important;
-  }
-}
-
 select {
   padding: 0 5px;
   margin: 0 5px;
@@ -117,14 +110,6 @@ select {
   height: 70%;
   margin: 20px auto;
   border: solid 1px #dedede;
-}
-
-@media screen and (max-width: 800px) {
-  .contentDiv {
-    padding: 10px;
-    margin-top: 10px;
-    width: 90%;
-  }
 }
 
 .ant-picker {
@@ -143,4 +128,83 @@ select {
 .formLabel {
   display: inline-block;
   min-width: 80px;
+}
+
+.scheduleDiv {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.successGif {
+  width: 480;
+  height: 270;
+}
+
+/* medium screens */
+
+@media screen and (min-width: 800) and (max-width: 1400px) and (orientation: portrait) {
+  .dateCard {
+    width: 80% !important;
+    display: inline-block;
+  }
+  .contentDiv {
+    width: 80% !important;
+  }
+  .scheduleDiv {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    display: flex;
+  }
+  .successGif {
+    width: 380;
+  }
+}
+
+/* smalll screens */
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .contentDiv {
+    padding: 10px;
+    margin-top: 10px;
+    width: 90%;
+  }
+  .indentedErrorTxt {
+    color: #ff7777;
+    display: inline-block;
+    padding-left: 0 !important;
+  }
+  .dateCard {
+    display: block;
+    min-width: 80px;
+    min-height: 100px;
+    width: 90% !important;
+  }
+  .scheduleDiv {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    border: solid 2px #ffff00;
+  }
+  .successGif {
+    width: 90%;
+  }
+  .successLbl {
+    font-size: 16px;
+  }
+  .successBtn {
+    height: 45px;
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .contentDiv {
+    padding: 10px;
+    margin-top: 10px;
+    width: 70%;
+  }
 }

@@ -27,7 +27,8 @@ function App() {
       usersDispatch({type:CHANGE_STEP, value:3})
     else if(userState.valid)
       usersDispatch({type:CHANGE_STEP, value:2})
-  }, [userState.valid, userState.confirmed])
+  // eslint-disable-next-line
+  }, [userState.valid])
 
 
   return (

@@ -4,8 +4,8 @@ import { useCustomContext } from '../../store/CustomContext';
 import { CHANGE_STEP } from '../../store/Actions';
 
 const NavItems = [{value:0, title:'Login'}, 
-                {value:1, title:'Enter Information'},
-                {value:2, title:'Confirm'},
+                {value:1, title:'Enter Information'}, 
+                {value:2, title:'Confirm'}, , 
                 {value:3, title:'Done'}]
 
 export default function Header({currentStep}) {

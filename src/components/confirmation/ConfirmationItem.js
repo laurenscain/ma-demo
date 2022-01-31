@@ -14,7 +14,7 @@ export default function ConfirmationItem({prop}) {
             setValue(user[prop]);
         else
             setValue(user[prop]);
-    // eslint-disable-line
+    // eslint-disable-next-line
     }, [prop])
 
     if(typeof value === 'object')

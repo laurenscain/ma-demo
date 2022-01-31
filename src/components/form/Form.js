@@ -33,14 +33,14 @@ export default function Form({errors}) {
             setDay('01');
             setYear('1980');
         }
-    // eslint-disable-line
+    // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
         if(user && user.birthdate && !isNaN(user.birthdate)) {
             setFromDate(moment(user.birthdate));
         } 
-    // eslint-disable-line
+    // eslint-disable-next-line
     }, [user])
 
     useEffect(() => {
@@ -85,7 +85,7 @@ export default function Form({errors}) {
 
             <span>Areas of Study</span><br/>
             <span className="errorTxt">{userState.errors.selectedSchedule}</span>
-            <div style={{marginTop:'20px', width:'100%', display: 'flex', flexDirection:'row', justifyContent:'space-evenly', flexWrap:'wrap'}}>
+            <div className='scheduleDiv'>
                 {userState.availableSchedule.map(s => <DateCard key={`datecard-${s.name}`} item={s} />)}
             </div>
             <Footer nextTxt="Submit" />

@@ -7,11 +7,11 @@ export default function Login( ) {
 
     return (
         <div className="loginForm">
-            <div className="tooltip">
-                <button disabled>Create Schedule</button>
+             <button onClick={() => usersDispatch({type:CHANGE_STEP, value:1})}>Create Schedule</button>
+                <div className="tooltip">
+                <button disabled>View/Edit Schedule</button>
                 <span className="tooltiptext">Coming Soon!</span>
             </div>
-            <button onClick={() => usersDispatch({type:CHANGE_STEP, value:1})}>View/Edit Schedule</button>
         </div>
     )
 }
