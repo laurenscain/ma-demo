@@ -82,7 +82,7 @@ button:disabled {
 
 .dateCard {
   width: 47% !important;
-  height: 60px !important;
+  min-height: 60px !important;
   border: solid 2px #cdcdcd;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px rgba(155, 155, 155, 0.2);
@@ -106,7 +106,7 @@ select {
 .contentDiv {
   padding: 50px;
   margin-top: 50px;
-  width: 50%;
+  width: 65%;
   height: 70%;
   margin: 20px auto;
   border: solid 1px #dedede;
@@ -181,12 +181,14 @@ select {
     display: block;
     min-width: 80px;
     min-height: 100px;
-    width: 90% !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .scheduleDiv {
     flex-wrap: nowrap;
     flex-direction: column;
-    border: solid 2px #ffff00;
   }
   .successGif {
     width: 90%;
@@ -201,10 +203,15 @@ select {
   }
 }
 
-@media screen and (orientation: landscape) {
+@media screen (max-width: 1200px) and (orientation: landscape) {
   .contentDiv {
     padding: 10px;
     margin-top: 10px;
-    width: 70%;
+    width: 80%;
+  }
+  .dateCard {
+    width: 100% !important;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -6,11 +6,6 @@ import { useCustomContext } from '../../store/CustomContext';
 export default function Success() {
     const { userState, usersDispatch } = useCustomContext();
 
-    useEffect(() => {
-      console.log('printing user object');
-      console.log(userState.user);
-    }, []);
-    
 
     return (
         <div className="successLbl">

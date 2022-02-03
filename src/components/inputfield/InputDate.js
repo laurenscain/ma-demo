@@ -4,7 +4,7 @@ import { DatePicker } from 'antd';
 import moment from 'moment';
 import { CHANGE_STUDY } from '../../store/Actions';
 
-export default function InputDate({name, value, defaultOpen, checkDisabled=false}) {
+export default function InputDate({name, value, defaultOpen, checkDisabled=false, handleChange}) {
 
     const { userState, usersDispatch } = useCustomContext();
     const [minDate, setMinDate] = useState();
@@ -24,8 +24,6 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
             let today = moment(new Date());
             if(m && m[0]){
                 let minimumDate = moment(m[0].startDate).isBefore(today, "MM-DD-YYYY") ? moment(today, "MM-DD-YYYY") : moment(m[0].startDate, "MM-DD-YYYY");
-                console.log('sttig min date', minimumDate)
-                console.log(m[0].startDate, moment(m[0].startDate, "MM-DD-YYYY"))
                 setMinDate(minimumDate);
 
                 usersDispatch({
@@ -44,12 +42,11 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
        let today = moment(new Date());
        
        let minimumDate = moment(value.date, "MM-DD-YYYY").isBefore(today) ? moment(today, "MM-DD-YYYY") : moment(value.date, "MM-DD-YYYY");
-       console.log('setting min date', minimumDate)
        setMinDate(minimumDate);
 
     }, [value])
 
-    const handleChange = val => {
+   /* const handleChange = val => {
 
         if(val)
             usersDispatch({
@@ -57,7 +54,7 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
                 field: name,
                 value:moment(val).format('MM-DD-YYYY')
             });
-    }
+    }*/
 
     /**
      * want to disable all dates before today, and any date not included in a scheduled period 
@@ -77,10 +74,10 @@ export default function InputDate({name, value, defaultOpen, checkDisabled=false
      
         return true;
     }
-console.log('min date',minDate)
+
     return (
         <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
-            <DatePicker allowClear={false} value={value && value.date !== undefined ? moment(value.date, "MM-DD-YYYY"): minDate ? moment(minDate, "MM-DD-YYYY") : null} open={defaultOpen} onChange={handleChange} disabledDate={isDateDisabled}  />
+            <DatePicker allowClear={false} value={value && moment(value, 'MM-DD-YYYY')} open={defaultOpen} onChange={handleChange} disabledDate={isDateDisabled}  />
             
             <span className="errorTxt">{userState.errors[name]}</span>
         </div>

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default function ValidationRules(values) {
     let errors = {};
 
@@ -15,16 +17,18 @@ export default function ValidationRules(values) {
   
     if(!values.birthdate || values.birthdate === '') {
         errors.birthdate = "Please enter your birthdate"
+    } else if(moment(values.birthdate, 'MM-DD-YYYY').isSameOrAfter(moment(new Date()))) {
+        errors.birthdate = "You were born in the future? That doesn't sound right"
     }
     
     if(!values.selectedSchedule || values.selectedSchedule.length < 1) {
         errors.selectedSchedule = 'Must choose at least one class.'
-    } else if(values.selectedSchedule.length > 1) {
-        let dupes = values.selectedSchedule.some((item, index) => values.selectedSchedule.findIndex(i => i.date === item.date) !== index);//values.selectedSchedule.find(i => i.date === item.date) === index});
+    } else {
+        let invalidDates = values.selectedSchedule.filter(item => !item.date);
         
-        if(dupes)
-            errors.selectedSchedule = 'Classes may not overlap'
+        if(invalidDates && invalidDates.length > 0)
+            errors.selectedSchedule = 'You must choose a time for each subject' 
     }
-
+    
     return errors;
 }
