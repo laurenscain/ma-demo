@@ -8,3 +8,6 @@
 - clone repo
 - npm i
 - npm start
+
+
+## Demo available online: https://laurenscain.github.io/
